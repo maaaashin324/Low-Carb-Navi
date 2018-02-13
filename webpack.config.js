@@ -23,7 +23,7 @@ module.exports = {
   devTool: 'cheap-module-eval-source-map',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'public'),
   },
   plugin: [
     new OpenBrowserPlugin({ url: 'http://localhost:8080' }),
