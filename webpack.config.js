@@ -14,12 +14,15 @@ module.exports = {
         test: /\.css$/,
       },
       {
-        exclude: /(node_modules)/,
+        exclude: /node_modules/,
         include: path.join(__dirname, 'src'),
         loader: 'babel-loader',
         query: {
           presets: ['react','es2015'],
-          plugins: ['transform-class-properties']
+          plugins: [
+            'transform-class-properties',
+            'transform-es2015-destructuring',
+          ],
         },
         test: /\.jsx$/,
       },
@@ -35,6 +38,11 @@ module.exports = {
     new OpenBrowserPlugin({ url: 'http://127.0.0.1:8080' }),
   ],
   resolve: {
-    extensions: ['.webpack.js', 'js', 'jsx'],
+    extensions: ['.webpack.js', '.js', '.jsx'],
+  },
+  devServer: {
+    contentBase: path.join(__dirname, "public"),
+    compress: true,
+    port: 8080
   },
 };

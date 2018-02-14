@@ -6,7 +6,7 @@ const defaultState = {
 const recordReducer = (state = defaultState, action) => {
   switch (action.type) {
   case 'REGISTERED': {
-    const { newState } = state;
+    const newState = Object.assign({}, state);
     // I need calling server but now I don't have it.
     return newState;
   }
