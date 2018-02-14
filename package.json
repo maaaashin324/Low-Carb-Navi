@@ -6,6 +6,9 @@
   "repository": "https://github.com/maaaashin324/Low-Carb-Navi.git",
   "author": "maaaashin324 <mstk.shin@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "webpack-dev-server --hot --inline"
+  },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.1",

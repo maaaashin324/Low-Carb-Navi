@@ -8,6 +8,8 @@ import App from './containers/App';
 import mapReducer from './reducers/map';
 import recordReducer from './reducers/record';
 
+import styles from './styles/style.css';
+
 const createStoreWithMiddleWare = compose(applyMiddleware(thunk))(createStore);
 const rootReducer = combineReducers({
   map: mapReducer,

@@ -3,7 +3,7 @@ const map = {
   restaurants: [],
 };
 
-const reducer = (state = map, action) => {
+const mapReducer = (state = map, action) => {
   switch (action.type) {
   case 'CHANGE_VIEW': {
     const newState = { ...state };
@@ -14,4 +14,4 @@ const reducer = (state = map, action) => {
   }
 };
 
-module.exports = reducer;
+module.exports = mapReducer;

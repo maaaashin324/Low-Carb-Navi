@@ -3,7 +3,7 @@ const defaultState = {
   address: null,
 };
 
-const reducer = (state = defaultState, action) => {
+const recordReducer = (state = defaultState, action) => {
   switch (action.type) {
   case 'REGISTERED': {
     const { newState } = state;
@@ -15,4 +15,4 @@ const reducer = (state = defaultState, action) => {
   }
 };
 
-export default reducer;
+export default recordReducer;

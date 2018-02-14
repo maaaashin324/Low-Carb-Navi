@@ -1,5 +1,6 @@
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   entry: [
@@ -9,24 +10,31 @@ module.exports = {
   module: {
     loaders: [
       {
-        loaders: 'style!css',
+        loaders: ['style-loader', 'css-loader'],
         test: /\.css$/,
       },
       {
         exclude: /(node_modules)/,
         include: path.join(__dirname, 'src'),
         loader: 'babel-loader',
+        query: {
+          presets: ['react','es2015'],
+          plugins: ['transform-class-properties']
+        },
         test: /\.jsx$/,
       },
     ],
   },
-  devTool: 'cheap-module-eval-source-map',
+  devtool: 'cheap-module-eval-source-map',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'public'),
+    publicPath: '/public',
   },
-  plugin: [
-    new OpenBrowserPlugin({ url: 'http://localhost:8080' }),
+  plugins: [
+    new OpenBrowserPlugin({ url: 'http://127.0.0.1:8080' }),
   ],
-  resolve: ['', '.webpack.js', 'js', 'jsx'],
+  resolve: {
+    extensions: ['.webpack.js', 'js', 'jsx'],
+  },
 };

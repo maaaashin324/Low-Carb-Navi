@@ -1,6 +1,8 @@
-const redis = require('redis');
+const Redis = require('redis');
+const users = require('./users');
+const restaurants = require('./restaurants');
 
 module.exports = () => ({
-  users: require('./users')(redis),
-  restaurants: require('./restaurants')(redis),
+  users: users(Redis),
+  restaurants: restaurants(Redis),
 });
