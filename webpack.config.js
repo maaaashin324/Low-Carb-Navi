@@ -14,7 +14,7 @@ module.exports = {
         test: /\.css$/,
       },
       {
-        exclude: /node_modules/,
+        exclude: /(node_modules)/,
         include: path.join(__dirname, 'src'),
         loader: 'babel-loader',
         query: {
@@ -41,7 +41,7 @@ module.exports = {
     extensions: ['.webpack.js', '.js', '.jsx'],
   },
   devServer: {
-    contentBase: path.join(__dirname, "public"),
+    contentBase: path.join(__dirname, "./"),
     compress: true,
     port: 8080
   },
