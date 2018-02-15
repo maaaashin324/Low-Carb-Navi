@@ -3,8 +3,8 @@ import { recordRestaurant } from '../actions/record';
 import Record from '../components/Record';
 
 const mapPropsToState = state => ({
-  name: state.name,
-  address: state.address,
+  name: state.record.name,
+  address: state.record.nameaddress,
 });
 
 const mapDispatchToState = dispatch => ({

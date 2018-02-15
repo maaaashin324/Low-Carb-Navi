@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
+import { withScriptjs, withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
 
-const ActualMap = withGoogleMap(props => (
+const ActualMap = withScriptjs(withGoogleMap(props => (
   <GoogleMap
-    defaultZoom={4}
+    defaultZoom={16}
     defaultCenter={{ lat: 35.681382, lng: 139.76608399999998 }}
   >
     {props.markers.map(marker => (
@@ -13,12 +13,12 @@ const ActualMap = withGoogleMap(props => (
       />
     ))}
   </GoogleMap>
-));
+)));
 
 export default class Map extends Component {
   componentDidMount() {
     if (this.props.restaurants <= 0) {
-      this.props.getRestaurants();
+      // this.props.getRestaurants();
     }
   }
 
@@ -26,7 +26,11 @@ export default class Map extends Component {
     return (
       <ActualMap
         className="restaurantMap"
-        marker={this.props.restaurants}
+        googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
+        markers={this.props.restaurants}
+        loadingElement={<div style={{ height: '100%' }} />}
+        containerElement={<div style={{ height: '800px' }} />}
+        mapElement={<div style={{ height: '100%' }} />}
       />
     );
   }
@@ -38,5 +42,5 @@ Map.propTypes = {
     name: PropTypes.string.isRequired,
     position: PropTypes.shape(PropTypes.string).isRequired,
   })).isRequired,
-  getRestaurants: PropTypes.func.isRequired,
+  // getRestaurants: PropTypes.func.isRequired,
 };

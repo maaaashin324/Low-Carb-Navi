@@ -5,9 +5,9 @@ const map = {
 
 const mapReducer = (state = map, action) => {
   switch (action.type) {
-  case 'CHANGE_VIEW': {
+  case 'CHANGE_PAGE': {
     const newState = Object.assign({}, state);
-    newState.currentView = action.type === 'home' ? 'home' : 'record';
+    newState.currentView = action.dest;
     return newState;
   }
   default: return state;

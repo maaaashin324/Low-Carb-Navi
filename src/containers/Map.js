@@ -3,7 +3,7 @@ import { getRestaurants } from '../actions/map';
 import Map from '../components/Map';
 
 const mapStateToProps = state => ({
-  restaurants: state.restaurants,
+  restaurants: state.map.restaurants,
 });
 
 const mapDispatchToProps = dispatch => ({

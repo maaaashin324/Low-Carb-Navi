@@ -2,16 +2,15 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 export default class Navbar extends Component {
-  handleHomeClick = (e) => {
+  handleClick = (e) => {
     e.preventDefault();
-    this.props.goAnywhere(e.target.name);
+    this.props.goAnyWhere(e.target.name);
   };
 
   render() {
     return (
       <div className="navbar">
         <button className="navbar-header" name="home" onClick={this.handleClick}>HOME</button>
-        <button className="navbar-header" name="map" onClick={this.handleClick}>MAP</button>
         <button className="navbar-header" name="record" onClick={this.handleClick}>RECORD</button>
       </div>
     );
@@ -19,5 +18,5 @@ export default class Navbar extends Component {
 }
 
 Navbar.propTypes = {
-  goAnywhere: PropTypes.func.isRequired,
+  goAnyWhere: PropTypes.func.isRequired,
 };
