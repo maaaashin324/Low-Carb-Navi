@@ -1,12 +1,22 @@
 const { promisify } = require('util');
 
 module.exports = (client) => {
-  const setAsync = promisify(client.geoadd);
+  const saddAsync = promisify(client.sadd).bind(client);
+  const geoAddAsync = promisify(client.geoadd).bind(client);
 
   return async (params) => {
-    const { name, lng, lat } = params.name;
+    const { name, lng, lat } = params;
 
-    const result = await setAsync(name, lng, lat);
-    return result;
+    try {
+      const saddResult = await saddAsync('restaurantName', name);
+      const geoAddResult = await geoAddAsync(name, lng, lat);
+      const resultObj = {
+        saddResult,
+        geoAddResult,
+      };
+      return resultObj;
+    } catch (error) {
+      return error;
+    }
   };
 };
