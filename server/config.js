@@ -8,4 +8,8 @@ module.exports = {
   express: {
     port: 3000,
   },
+  // logger setup
+  logger: {
+    format: 'MMMM Do YYYY, h:mm:ss a',
+  },
 };
