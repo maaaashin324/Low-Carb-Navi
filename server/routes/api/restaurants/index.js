@@ -10,7 +10,9 @@ module.exports = (services) => {
       .catch(err => res.status(400).send(err.message));
   });
 
-  router.get('', (req, res) => services.db.restaurants.listRestaurant()
+  router.get('', (req, res) => services.db.restaurants.listRestaurants()
     .then(successRes => res.status(200).json(successRes))
     .catch(err => res.status(400).send(err.message)));
+
+  return router;
 };

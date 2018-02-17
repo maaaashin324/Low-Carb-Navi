@@ -5,8 +5,7 @@ const usersRouter = require('./users/index');
 const restaurantsRouter = require('./restaurants/index');
 
 module.exports = (services) => {
-  router.use('./users', usersRouter(services));
-  router.use('./restaurants', restaurantsRouter(services));
-
+  router.use('/users', usersRouter(services));
+  router.use('/restaurants', restaurantsRouter(services));
   return router;
 };

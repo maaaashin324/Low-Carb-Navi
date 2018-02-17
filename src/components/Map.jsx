@@ -18,7 +18,7 @@ const ActualMap = withScriptjs(withGoogleMap(props => (
 export default class Map extends Component {
   componentDidMount() {
     if (this.props.restaurants <= 0) {
-      this.props.getRestaurants();
+      // this.props.getRestaurants();
     }
   }
 

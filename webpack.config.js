@@ -8,25 +8,24 @@ module.exports = {
     `${path.resolve(__dirname, 'src')}/index.jsx`,
   ],
   module: {
-    loaders: [
+    rules: [
       {
-        loaders: ['style-loader', 'css-loader'],
         test: /\.css$/,
+        use: [
+          { loader: 'style-loader' },
+          { loader: 'css-loader' },
+        ],
       },
       {
-        exclude: /(node_modules)/,
-        include: path.join(__dirname, 'src'),
-        loader: 'babel-loader',
-        query: {
-          presets: ['react','es2015'],
-          plugins: [
-            'transform-class-properties',
-            'transform-es2015-destructuring',
-          ],
-        },
         test: /\.jsx$/,
-      },
-    ],
+        include: path.join(__dirname, 'src'),
+        exclude: /(node_modules)/,
+        use: [
+          { loader: 'babel-loader' },
+
+        ]
+      }
+    ]
   },
   devtool: 'cheap-module-eval-source-map',
   output: {

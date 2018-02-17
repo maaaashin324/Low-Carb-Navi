@@ -4,20 +4,18 @@ module.exports = (client) => {
   const smembersAsync = promisify(client.smembers).bind(client);
   const geoposAsync = promisify(client.geopos).bind(client);
 
-  const getGeoData = async (restaurantName) => {
-    const positon = await geoposAsync(restaurantName);
+  const getGeoData = async (key, restaurantName) => {
+    const positon = await geoposAsync(key, restaurantName);
     return ({
       restaurantName,
       positon,
     });
   };
 
-  return async () => {
-    const restaurantNames = await smembersAsync('restaurantName');
-
-    const result = restaurantNames.map(eachRestaurant => getGeoData(eachRestaurant)
-      .then(eachGeoData => eachGeoData))
-      .catch(err => err.message);
-    return result;
-  };
+  return () => smembersAsync('restaurantName')
+    .then((restaurantNames) => {
+      const promises = restaurantNames.map(eachRestaurant => getGeoData('restaurant', eachRestaurant));
+      return Promise.all(promises);
+    })
+    .catch(err => err.message);
 };

@@ -6,12 +6,12 @@ const map = {
 const mapReducer = (state = map, action) => {
   switch (action.type) {
   case 'CHANGE_PAGE': {
-    const newState = { ...state };
+    const newState = Object.assign({}, state);
     newState.currentView = action.dest;
     return newState;
   }
   case 'GET_RESTAURANT': {
-    const newState = { ...state };
+    const newState = Object.assign({}, state);
     newState.restaurants = action.restaurant;
     return newState;
   }
