@@ -20,6 +20,16 @@ $ cd Low-Carb-Navi
 # Install dependencies
 $ yarn install
 
-# Run the app
+# Migration
+$ yarn seed
+
+# Run the server
 $ yarn start
+
+# Run the client
+$ yarn hack
 ```
+
+## Customer Journey
+
+![Customer Journey](IMG_7405.png)
