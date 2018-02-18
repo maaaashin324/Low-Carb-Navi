@@ -3,8 +3,10 @@ import PropTypes from 'prop-types';
 
 export default class Record extends Component {
   handleSubmit = (event) => {
-    console.log(event);
-    this.props.registRestaurant(event);
+    this.props.registRestaurant({
+      name: event.target[0].value,
+      address: event.target[1].value,
+    });
   };
 
   render() {

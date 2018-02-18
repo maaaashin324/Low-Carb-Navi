@@ -9,7 +9,6 @@ const ActualMap = withScriptjs(withGoogleMap(props => (
   >
     {props.markers.map((marker) => {
       const blueMark = 'https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_red.png';
-      console.log(marker);
       return (
         <Marker
           position={{ lat: +marker.position.lat, lng: +marker.position.lng }}

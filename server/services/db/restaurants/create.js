@@ -9,7 +9,7 @@ module.exports = (client) => {
 
     try {
       const saddResult = await saddAsync('restaurantName', name);
-      const geoAddResult = await geoAddAsync(name, lng, lat);
+      const geoAddResult = await geoAddAsync('restaurant', lng, lat, name);
       const resultObj = {
         saddResult,
         geoAddResult,

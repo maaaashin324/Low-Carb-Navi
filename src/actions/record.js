@@ -1,29 +1,25 @@
-module.exports = {
-  registRestaurant: (restaurantData) => {
-    const { name, address } = restaurantData;
-    const geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${address}`;
-    const thisAppUrl = 'http://127.0.0.1/restaurants';
+const { fetchResistRestaurant } = require('../util/index');
 
-    fetch(geocodeUrl, { method: 'GET' })
-      .then(res => res.json())
-      .then((geoData) => {
-        const { location } = geoData.results[0].geometry;
-        return ({
-          name,
-          lng: location.lng,
-          lat: location.lat,
-        });
-      })
-      .then(locationData => fetch(thisAppUrl, {
-        body: JSON.stringify(locationData),
-        method: 'POST',
-      }))
-      .then(() => ({
-        type: 'REGISTERED',
-      }))
-      .catch(err => ({
-        type: 'ERROR',
-        err,
-      }));
-  },
-};
+function registMarkerSuccess() {
+  return {
+    type: 'REGISTERED',
+  };
+}
+
+function registMarkerFail(error) {
+  return {
+    type: 'ERROR',
+    error,
+  };
+}
+
+export function registRestaurantAction() {
+  return dispatch => (async (data) => {
+    const response = await fetchResistRestaurant(data);
+    if (response === 'success') {
+      dispatch(registMarkerSuccess());
+      return;
+    }
+    dispatch(registMarkerFail(response));
+  });
+}

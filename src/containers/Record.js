@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { recordRestaurant } from '../actions/record';
+import { registRestaurantAction } from '../actions/record';
 import Record from '../components/Record';
 
 const mapPropsToState = state => ({
@@ -8,8 +8,8 @@ const mapPropsToState = state => ({
 });
 
 const mapDispatchToState = dispatch => ({
-  recordRestaurant: (restaurantData) => {
-    dispatch(recordRestaurant(restaurantData));
+  registRestaurant: (restaurantData) => {
+    dispatch(registRestaurantAction())(restaurantData);
   },
 });
 

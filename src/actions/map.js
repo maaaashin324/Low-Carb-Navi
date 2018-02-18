@@ -1,4 +1,4 @@
-import { fetchAllRestaurants } from '../util/index';
+const { fetchAllRestaurants } = require('../util/index');
 
 function getMarkersSuccess(markers) {
   return {
@@ -15,10 +15,8 @@ export function goAnyWhere(dest) {
 }
 
 export function getMarkers() {
-  return function (dispatch) {
-    return (async function () {
-      const restaurants = await fetchAllRestaurants();
-      dispatch(getMarkersSuccess(restaurants));
-    }());
-  };
+  return dispatch => (async () => {
+    const restaurants = await fetchAllRestaurants();
+    dispatch(getMarkersSuccess(restaurants));
+  })();
 }

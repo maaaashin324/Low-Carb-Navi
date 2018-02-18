@@ -10,6 +10,11 @@ const recordReducer = (state = defaultState, action) => {
     // I need calling server but now I don't have it.
     return newState;
   }
+  case 'ERROR': {
+    // I need calling server but now I don't have it.
+    console.error(action.error);
+    return state;
+  }
   default:
     return state;
   }
