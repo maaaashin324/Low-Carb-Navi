@@ -8,7 +8,8 @@
   "license": "MIT",
   "scripts": {
     "start": "node server",
-    "hack": "webpack && webpack-dev-server --hot --inline --host 127.0.0.1 --port 8080"
+    "hack": "webpack && webpack-dev-server --hot --inline --host 127.0.0.1 --port 8080",
+    "seed": "node server/services/db/seeds/index.js"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
