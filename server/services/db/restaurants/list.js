@@ -5,10 +5,10 @@ module.exports = (client) => {
   const geoposAsync = promisify(client.geopos).bind(client);
 
   const getGeoData = async (key, restaurantName) => {
-    const positon = await geoposAsync(key, restaurantName);
+    const position = await geoposAsync(key, restaurantName);
     return ({
       restaurantName,
-      positon,
+      position,
     });
   };
 

@@ -1,20 +1,24 @@
-const fetchAllRestaurants = async () => {
-  const thisAppUrl = 'http://127.0.0.1/restaurants';
+import { fetchAllRestaurants } from '../util/index';
 
-  fetch(thisAppUrl, { method: 'GET' })
-    .then(res => res.json());
-};
+function getMarkersSuccess(markers) {
+  return {
+    type: 'GET_RESTAURANT',
+    restaurant: markers,
+  };
+}
 
-module.exports = {
-  goAnyWhere: dest => ({
+export function goAnyWhere(dest) {
+  return {
     type: 'CHANGE_PAGE',
     dest,
-  }),
-  getRestaurants: () => {
-    fetchAllRestaurants()
-      .then(data => ({
-        type: 'GET_RESTAURANT',
-        restaurant: data,
-      }));
-  },
-};
+  };
+}
+
+export function getMarkers() {
+  return function (dispatch) {
+    return (async function () {
+      const restaurants = await fetchAllRestaurants();
+      dispatch(getMarkersSuccess(restaurants));
+    }());
+  };
+}

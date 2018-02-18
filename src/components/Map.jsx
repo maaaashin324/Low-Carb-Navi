@@ -7,18 +7,23 @@ const ActualMap = withScriptjs(withGoogleMap(props => (
     defaultZoom={16}
     defaultCenter={{ lat: 35.681382, lng: 139.76608399999998 }}
   >
-    {props.markers.map(marker => (
-      <Marker
-        position={{ lat: marker.position.lat, lng: marker.position.lng }}
-      />
-    ))}
+    {props.markers.map((marker) => {
+      const blueMark = 'https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_red.png';
+      console.log(marker);
+      return (
+        <Marker
+          position={{ lat: +marker.position.lat, lng: +marker.position.lng }}
+          icon={{ url: blueMark }}
+        />
+      );
+    })}
   </GoogleMap>
 )));
 
 export default class Map extends Component {
-  componentDidMount() {
-    if (this.props.restaurants <= 0) {
-      // this.props.getRestaurants();
+  async componentDidMount() {
+    if (this.props.restaurants.length === 0) {
+      this.props.getMarkers();
     }
   }
 
@@ -38,9 +43,9 @@ export default class Map extends Component {
 
 Map.propTypes = {
   restaurants: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    position: PropTypes.shape(PropTypes.string).isRequired,
+    id: PropTypes.any,
+    name: PropTypes.any,
+    position: PropTypes.arrayOf(PropTypes.any),
   })).isRequired,
-  getRestaurants: PropTypes.func.isRequired,
+  getMarkers: PropTypes.func.isRequired,
 };

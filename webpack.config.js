@@ -4,6 +4,7 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: [
+    'babel-polyfill',
     'webpack/hot/only-dev-server',
     `${path.resolve(__dirname, 'src')}/index.jsx`,
   ],
@@ -22,7 +23,6 @@ module.exports = {
         exclude: /(node_modules)/,
         use: [
           { loader: 'babel-loader' },
-
         ]
       }
     ]

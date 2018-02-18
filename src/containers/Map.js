@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getRestaurants } from '../actions/map';
+import { getMarkers } from '../actions/map';
 import Map from '../components/Map';
 
 const mapStateToProps = state => ({
@@ -7,7 +7,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getRestaurants: () => dispatch(getRestaurants()),
+  getMarkers: () => dispatch(getMarkers()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Map);
