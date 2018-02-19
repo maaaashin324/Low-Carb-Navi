@@ -5,7 +5,7 @@ module.exports = {
   },
   // server port setup
   express: {
-    port: process.env.PORT || 3000,
+    port: process.env.PORT || 5000,
   },
   // logger setup
   logger: {

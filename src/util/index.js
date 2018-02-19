@@ -1,4 +1,5 @@
-const thisAppUrl = 'http://localhost:3000/api/restaurants';
+// const thisAppUrl = `http://localhost:5000/api/restaurants`;
+const thisAppUrl = 'https://cc3-low-carbo.herokuapp.com/api/restaurants';
 
 module.exports = {
   async fetchAllRestaurants() {
