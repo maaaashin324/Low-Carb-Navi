@@ -10,7 +10,7 @@
     "start": "node server",
     "hack": "webpack && webpack-dev-server --hot --inline --host 127.0.0.1 --port 8080",
     "seed": "node server/services/db/seeds/index.js",
-    "heroku-postbuild": "webpack -p --config ./webpack.config.js --progress && yarn seed"
+    "heroku-postbuild": "webpack && yarn seed"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",
