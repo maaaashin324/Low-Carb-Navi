@@ -1,11 +1,11 @@
-const OpenBrowserPlugin = require('open-browser-webpack-plugin');
+// const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
   entry: [
     'babel-polyfill',
-    'webpack/hot/only-dev-server',
+    // 'webpack/hot/only-dev-server',
     `${path.resolve(__dirname, 'src')}/index.jsx`,
   ],
   module: {
@@ -33,15 +33,15 @@ module.exports = {
     path: path.resolve(__dirname, 'public'),
     publicPath: '/public',
   },
-  plugins: [
-    new OpenBrowserPlugin({ url: 'http://127.0.0.1:8080' }),
-  ],
+  // plugins: [
+  //   new OpenBrowserPlugin({ url: 'http://127.0.0.1:8080' }),
+  // ],
   resolve: {
     extensions: ['.webpack.js', '.js', '.jsx'],
   },
-  devServer: {
-    contentBase: path.join(__dirname, "public"),
-    compress: true,
-    port: 8080
-  },
+  // devServer: {
+  //   contentBase: path.join(__dirname, "public"),
+  //   compress: true,
+  //   port: 8080
+  // },
 };
