@@ -1,3 +1,5 @@
+const path = require('path');
+
 // The type of config is object. This includes the configration of redis, express and logger.
 const config = require('./config.js');
 // The type of servides is object and this includes the functions of db and logger.
@@ -25,9 +27,9 @@ app.use((req, res, next) => {
 app.use(bodyParser.json({ type: 'application/json', limit: '50mb' }));
 
 app.use('/api', apiRouter);
-app.use(express.static(`${__dirname}/public`));
+app.use(express.static(path.join(__dirname, '../public')));
 
-app.use((err, req, res, next) => {
+app.use((err, req, res) => {
   if (err.stack) {
     if (err.stack.match('node_modules/body-parser')) return res.status(400).send('Invalid JSON');
   }

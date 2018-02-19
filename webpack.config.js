@@ -40,7 +40,7 @@ module.exports = {
     extensions: ['.webpack.js', '.js', '.jsx'],
   },
   devServer: {
-    contentBase: path.join(__dirname, "./"),
+    contentBase: path.join(__dirname, "public"),
     compress: true,
     port: 8080
   },
