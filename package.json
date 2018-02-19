@@ -10,7 +10,7 @@
     "start": "node server",
     "hack": "webpack && webpack-dev-server --hot --inline --host 127.0.0.1 --port 8080",
     "seed": "node server/services/db/seeds/index.js",
-    "heroku-postbuild": "webpack -p --config ./webpack.prod.config.js --progress && yarn seed"
+    "heroku-postbuild": "webpack -p --config ./webpack.config.js --progress && yarn seed"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",
@@ -23,10 +23,8 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.6.1",
     "jest": "^22.2.2",
-    "open-browser-webpack-plugin": "^0.0.5",
     "react-addons-test-utils": "^15.6.2",
-    "sinon": "^4.3.0",
-    "webpack-dev-server": "^2.11.1"
+    "sinon": "^4.3.0"
   },
   "dependencies": {
     "babel-core": "^6.26.0",
@@ -35,9 +33,9 @@
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-es2015-destructuring": "^6.23.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-polyfill": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
-    "babel-polyfill": "^6.26.0",
     "body-parser": "^1.18.2",
     "css-loader": "^0.28.9",
     "express": "^4.16.2",
@@ -45,6 +43,7 @@
     "lodash": "^4.17.5",
     "moment": "^2.20.1",
     "morgan": "^1.9.0",
+    "open-browser-webpack-plugin": "^0.0.5",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
@@ -54,7 +53,8 @@
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
     "style-loader": "^0.20.1",
-    "webpack": "^3.11.0"
+    "webpack": "^3.11.0",
+    "webpack-dev-server": "^2.11.1"
   },
   "engines": {
     "node": ">=9.3.0",
