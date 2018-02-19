@@ -9,7 +9,8 @@
   "scripts": {
     "start": "node server",
     "hack": "webpack && webpack-dev-server --hot --inline --host 127.0.0.1 --port 8080",
-    "seed": "node server/services/db/seeds/index.js"
+    "seed": "node server/services/db/seeds/index.js",
+    "heroku-postbuild": "webpack -p --config ./webpack.prod.config.js --progress && yarn seed"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
